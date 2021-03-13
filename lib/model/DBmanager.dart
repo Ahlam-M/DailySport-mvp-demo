@@ -2,6 +2,7 @@
 import 'dart:io';
 
 import 'package:daily_sport_mvp_flutter/model/entities/Record.dart';
+import 'package:daily_sport_mvp_flutter/utils/DateTimeUtils.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
@@ -52,7 +53,7 @@ class DBmanager {
 
   Future<int> insertNewRecord(Record record) async {
     Database db = await instance.database;
-
+    print(record.minutes.toString());
     Map<String, dynamic> row = {
       R_ID: record.id,
       R_DATE: record.date,
@@ -62,7 +63,7 @@ class DBmanager {
   }
 
 
-  Future<List<Record>> getRecords() async {
+  Future<List<Record>> getAllRecords() async {
     Database db = await instance.database;
 
     List<Map<String, dynamic>> list = await db.query(TABLE_RECORDS, orderBy: R_ID + ' DESC');
@@ -73,4 +74,12 @@ class DBmanager {
     return records;
   }
 
+  Future<int> getOneDayMinutes(String date) async {
+    Database db = await instance.database;
+
+    var v = await db.rawQuery('SELECT SUM($R_MINUTES) FROM $TABLE_RECORDS where $R_DATE = ?', [date]);
+    int sum = v[0]['SUM($R_MINUTES)'];
+
+    return sum;
+  }
 }

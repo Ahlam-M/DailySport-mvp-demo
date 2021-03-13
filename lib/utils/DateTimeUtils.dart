@@ -1,11 +1,17 @@
 
-
 import 'package:intl/intl.dart';
 
 class DateTimeUtils {
 
-  static String getDate(int timestamp){
-    var formatter = new DateFormat.yMd('en');
-    return formatter.format(DateTime.fromMillisecondsSinceEpoch(timestamp * 1000)).trim();
+  static final String _DATE_FORMAT = 'yy-MM-dd';
+
+  static int getTimestampNow(){
+    return DateTime.now().millisecondsSinceEpoch;
+  }
+
+  static String getDateToday(){
+    DateTime now = DateTime.now();
+    DateFormat formatter = DateFormat(_DATE_FORMAT);
+    return formatter.format(now);
   }
 }
