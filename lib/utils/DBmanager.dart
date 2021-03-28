@@ -1,7 +1,7 @@
 
 import 'dart:io';
 
-import 'package:daily_sport_mvp_flutter/model/entities/Record.dart';
+import 'package:daily_sport_mvp_flutter/model/Record.dart';
 import 'package:daily_sport_mvp_flutter/utils/DateTimeUtils.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:sqflite/sqflite.dart';

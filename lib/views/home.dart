@@ -1,6 +1,6 @@
 
-import 'package:daily_sport_mvp_flutter/model/DBmanager.dart';
-import 'package:daily_sport_mvp_flutter/model/entities/Record.dart';
+import 'package:daily_sport_mvp_flutter/utils/DBmanager.dart';
+import 'package:daily_sport_mvp_flutter/model/Record.dart';
 import 'package:daily_sport_mvp_flutter/presenters/RecordsHelper.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
